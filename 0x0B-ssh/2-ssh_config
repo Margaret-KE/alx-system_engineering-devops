@@ -1,6 +1,6 @@
 # SSH configuration file for the local SSH client
 
-Host 100.26.151.67
+Host 100.26.214.134
      PasswordAuthentication no
      IdentityFile ~/.ssh/school
 
