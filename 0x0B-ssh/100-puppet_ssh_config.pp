@@ -1,4 +1,4 @@
-# client config file
+# Ensure SSH client configuration
 include stdlib
 
 file_line { 'Turn off passwd auth':
