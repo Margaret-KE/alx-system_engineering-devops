@@ -1,0 +1,38 @@
+Postmortem: When Apache Had a Meltdown and Took Our App Down with It
+
+Issue Summary:
+
+Duration: February 17, 2024, from 10:00 AM to 1:00 PM (EAT)
+
+Impact: Brace yourselves! Our beloved web app took an unexpected siesta for about 3 hours straight. Users were left scratching their heads as they encountered the dreaded 503 errors whenever they tried to access our app. It was like the app went on a coffee break without telling anyone!
+
+Root Cause: Hold onto your hats! It turns out our trusty Apache server had a little too much to handle. A misconfiguration in its virtual hosts was like a sneaky gremlin, causing our server to throw in the towel and take a power nap.
+
+Timeline:
+
+10:00 AM: Uh-oh! Our monitoring tools went berserk, bombarding us with alerts screaming, "John, we have a problem!"
+10:05 AM: The engineering team was summoned to the rescue. We geared up for battle against the impending chaos.
+10:10 AM: Initial investigations felt like stumbling through a maze blindfolded. We chased ghosts in the network and poked the database, hoping for a clue.
+10:30 AM: The database upgrade was fingered as the prime suspect. But alas, it was a red herring, leading us down a rabbit hole of confusion.
+11:00 AM: With no end in sight, we called upon the wise old SysAdmin wizard to aid us in our hour of need.
+11:30 AM: Gosh! After much head-scratching and beard-stroking, the culprit was unmasked - the misconfigured Apache virtual hosts!
+12:00 PM: Armed with our newfound knowledge, we swooped in and applied a magical fix to tame the unruly virtual hosts.
+1:00 PM: Victory! Our app emerged from its slumber, blinking in the bright light of a restored service.
+
+Root Cause and Resolution:
+Root Cause: Picture this - our Apache server was like a hungry teenager at an all-you-can-eat buffet, spawning way too many worker processes thanks to those mischievous virtual hosts.
+Resolution: We whipped those virtual hosts into shape, tweaking their configurations to play nice and avoid overloading our poor server.
+
+Corrective and Preventative Measures:
+Improvements/Fixes:
+Let's tighten the reins on our virtual hosts with some good old-fashioned documentation and best practices.
+We'll put our virtual hosts through boot camp with automated testing to catch any shenanigans before they cause trouble.
+Our monitoring systems are getting a makeover, with upgraded sensors to sniff out trouble before it snowballs into chaos.
+
+Tasks:
+Update our virtual host playbook with clear instructions and warnings against misconfigurations.
+Conduct a thorough audit of all virtual hosts to weed out any troublemakers lurking in the shadows.
+Enlist the help of automation tools to keep our virtual hosts in line and prevent future rebellions.
+
+Conclusion:
+Hold onto your hats, folks! With these measures in place, we're fortifying our defenses and ensuring that Apache's next meltdown remains nothing but a distant memory.
