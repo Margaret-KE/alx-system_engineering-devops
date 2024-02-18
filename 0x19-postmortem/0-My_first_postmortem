@@ -1,0 +1,38 @@
+Postmortem:A Creative Outage Incident
+
+Issue Summary:
+
+Duration: February 17, 2024, from 10:00 AM to 1:00 PM (EAT)
+Impact: The web server hosting our application experienced downtime, rendering the service inaccessible to users for approximately 3 hours. During this time, all users attempting to access the application encountered errors, resulting in a complete service outage
+
+Root Cause: The outage was caused by a misconfiguration in the Apache server's virtual host settings, leading to resource exhaustion and subsequent server unresponsiveness.
+
+Timeline:
+
+10:00 AM: Issue detected through monitoring alerts indicating a sudden spike in HTTP 503 responses.
+10:05 AM: Engineering team notified of the issue via automated alerting systems.
+10:10 AM: Initial investigation focused on network connectivity and database performance as potential causes of the issue.
+10:30 AM: Misleading assumption made that a recent database upgrade might be responsible for the increased error rates.
+11:00 AM: Issue escalated to senior SysAdmin for further analysis and assistance.
+11:30 AM: Root cause identified as misconfigured Apache virtual hosts causing excessive resource consumption.
+12:00 PM: Configuration fix applied to Apache virtual hosts to alleviate resource exhaustion.
+1:00 PM: Service fully restored following the implementation of the configuration fix.
+
+Root Cause and Resolution:
+Root Cause: Misconfigured Apache virtual hosts were configured to spawn excessive worker processes, leading to resource exhaustion and server unresponsiveness.
+Resolution: The issue was resolved by adjusting the Apache virtual host configuration to limit the number of worker processes and optimize resource utilization.
+
+Corrective and Preventative Measures:
+Improvements/Fixes:
+Review and audit all virtual host configurations to ensure they adhere to best practices.
+Implement automated testing for virtual host configurations to detect potential misconfigurations before deployment.
+Enhance monitoring and alerting systems to provide early detection of similar issues in the future.
+
+Tasks:
+Update documentation detailing best practices for configuring Apache virtual hosts.
+Conduct a thorough review of all virtual host configurations to identify and rectify any existing misconfigurations.
+Implement automated configuration management tools to enforce consistent and standardized virtual host configurations across all servers.
+
+Conclusion:
+
+By addressing the root cause of the outage and implementing corrective measures, we aim to improve the stability and reliability of our web hosting infrastructure, minimizing the risk of similar incidents occurring in the future.
